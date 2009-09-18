@@ -7,7 +7,7 @@
 		$(document).ready(function(){
 			$.get("/write",function(data){
 				$('#write').html(data);
-				$('#submit').click(function(){
+				$('#write #submit').click(function(){
 					$(".error").hide();
 					var hasError = false;
 					var titleVal = $('#title').val();
@@ -40,6 +40,11 @@
 				$('#list').html(data);
 			});
 		});
+		var edit = function(obj){
+			$.get("/edit",{key:obj},function(data){
+				$('#'+obj).html(data);
+			});
+		};
 		</script>
 	</head>
 	<body id="index">

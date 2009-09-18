@@ -54,8 +54,15 @@ class MainHandler(webapp.RequestHandler):
 
 class EditHandler(webapp.RequestHandler):      
 	def get(self):
-		#todo : edit
-		self.response.out.write('Hello world!')
+		key = db.Key(self.request.get('key'))
+		article = Article.all().ancestor(key).get()
+		user = users.get_current_user()
+		template_values = {
+			'user': user,
+			'article': article,
+			}
+		path = os.path.join(os.path.dirname(__file__), 'write.html')
+		self.response.out.write(template.render(path, template_values))
 
 
 class WriteHandler(webapp.RequestHandler):      
@@ -87,10 +94,10 @@ class WriteHandler(webapp.RequestHandler):
 		article.content = self.request.get('content')
 		article.title = self.request.get('title')
 		article.put()
-		# if key:
-		# 			self.response.out.write('modify ok')
-		# 		else:
-		self.response.out.write('post ok')
+		if self.request.get('key'):
+			self.response.out.write('modify ok')
+		else:
+			self.response.out.write('post ok')
 
 
 class ListHandler(webapp.RequestHandler):      
