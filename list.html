@@ -1,22 +1,22 @@
 {% for article in articles%}
 <div id="{{ article.key }}">
-  <h2>{{ article.title|escape }}</h2>
-  {% if article.author %}
-    <b>{{ article.author.nickname }}</b> wrote {{ article.date|timesince }} ago:
-    {% ifequal user article.author %}
-    <a href="javascript:edit(this)">edit</a>
-    <a href="del?key={{ article.key }}">del</a>
-    {% endifequal %}
-  {% else %}
-    
-   An anonymous person wrote {{ article.date|timesince }} ago:
-	
-   {% if article.password %}
-    <a href="javascript:edit('{{ article.key }}')">edit</a>
-    <a href="del?key={{ article.key }}">del</a>
-   {% endif %}
-  {% endif %}
-  <blockquote>{{ article.content|escape|linebreaks }}</blockquote>
+	<h2>{{ article.title|escape }}</h2>
+	{% if article.author %}
+		<b>{{ article.author.nickname }}</b> wrote {{ article.date|timesince }} ago:
+		{% ifequal user article.author %}
+			<a href="javascript:edit('{{ article.key }}')">edit</a>
+			<a href="javascript:del('{{ article.key }}')">del</a>
+		{% endifequal %}
+	{% else %}
+  
+	 An anonymous person wrote {{ article.date|timesince }} ago:
+
+		{% if article.password %}
+			<a href="javascript:edit('{{ article.key }}')">edit</a>
+			<a href="javascript:del('{{ article.key }}')">del</a>
+		{% endif %}
+	{% endif %}
+	<blockquote>{{ article.content|escape|linebreaks }}</blockquote>
 </div>
 {% endfor %}
 
