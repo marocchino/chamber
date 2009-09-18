@@ -1,0 +1,20 @@
+{% for article in articles%}
+  <h2>{{ article.title|escape }}</h2>
+  {% if article.author %}
+    <b>{{ article.author.nickname }}</b> wrote {{ article.date|timesince }} ago:
+    {% ifequal user article.author %}
+    <a href="edit?key={{ article.key }}">edit</a>
+    <a href="del?key={{ article.key }}">del</a>
+    {% endifequal %}
+  {% else %}
+    
+   An anonymous person wrote {{ article.date|timesince }} ago:
+	
+   {% if article.password %}
+    <a href="edit?key={{ article.key }}">edit</a>
+    <a href="del?key={{ article.key }}">del</a>
+   {% endif %}
+  {% endif %}
+  <blockquote>{{ article.content|escape|linebreaks }}</blockquote>
+{% endfor %}
+

@@ -1,0 +1,9 @@
+<form action="/write" method="post">
+<input name="key" value="{{ article.key }}" type="hidden">
+  <div><label>title : </label><input name="title" value="{{ article.title }}"></div>
+{% if not user %}
+  <div><label>password : </label><input name="password" value="" type="password">(for modify or delete)</div>
+{% endif %}
+  <div><textarea name="content" rows="3" cols="60">{{ article.content }}</textarea></div>
+  <div><input type="button" id="submit" value="Sign"></div>
+</form>
