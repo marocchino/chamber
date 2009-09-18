@@ -1,7 +1,7 @@
-<input id="key" name="key" value="{{ article.key }}" type="hidden">
-  <div><label>title : </label><input name="title" id="title" value="{{ article.title }}"></div>
+<input id="key" value="{{ article.key }}" type="hidden">
+  <div><label>title : </label><input id="title" value="{{ article.title }}"></div>
 {% if not user %}
-  <div><label>password : </label><input id="password" name="password" value="" type="password">(for modify or delete)</div>
+  <div><label>password : </label><input id="password" value="" type="password">(for modify or delete)</div>
 {% endif %}
-  <div><textarea id="content" name="content" rows="8" cols="40">{{ article.content }}</textarea></div>
+  <div><textarea id="content" rows="8" cols="40">{{ article.content }}</textarea></div>
   <div><input type="submit" id="submit" value="Sign"></div>

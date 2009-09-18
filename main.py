@@ -63,6 +63,27 @@ class EditHandler(webapp.RequestHandler):
 			}
 		path = os.path.join(os.path.dirname(__file__), 'write.html')
 		self.response.out.write(template.render(path, template_values))
+	def post(self):
+		user = users.get_current_user()
+		password = self.request.get('password')
+		if self.request.get('key'):
+			key = db.Key(self.request.get('key'))
+			article = Article.all().ancestor(key).get()
+			if user or password == article.password:
+				article.deleted = True
+				db.put(article)
+				article = Article()
+				if user:
+					article.author = user
+				if password:
+					article.password = password
+				article.deleted = False
+				article.content = self.request.get('content')
+				article.title = self.request.get('title')
+				article.put()
+				self.response.out.write('modify ok')
+			else:
+				self.response.out.write('modify failed')
 
 
 class WriteHandler(webapp.RequestHandler):      
@@ -76,15 +97,6 @@ class WriteHandler(webapp.RequestHandler):
 	def post(self):
 		user = users.get_current_user()
 		password = self.request.get('password')
-		if self.request.get('key'):
-			key = db.Key(self.request.get('key'))
-			article = Article.all().ancestor(key).get()
-			if user or password == greeting.password:
-				greeting.deleted = True
-				db.put(greeting)
-			else:
-				self.response.out.write('modify failed')
-				return
 		article = Article()
 		if user:
 			article.author = user
@@ -94,10 +106,7 @@ class WriteHandler(webapp.RequestHandler):
 		article.content = self.request.get('content')
 		article.title = self.request.get('title')
 		article.put()
-		if self.request.get('key'):
-			self.response.out.write('modify ok')
-		else:
-			self.response.out.write('post ok')
+		self.response.out.write('post ok')
 
 
 class ListHandler(webapp.RequestHandler):      
