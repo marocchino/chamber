@@ -7,6 +7,34 @@
 		$(document).ready(function(){
 			$.get("/write",function(data){
 				$('#write').html(data);
+				$('#submit').click(function(){
+					$(".error").hide();
+					var hasError = false;
+					var titleVal = $('#title').val();
+					var contentVal = $('#content').val();
+					var keyVal = $('#key').val();
+					var passwordVal = $('#password').val();
+					if(titleVal == ''){
+						$('#title').after('<span class="error">title must be not null</span>');
+						hasError = true;
+					};
+					if(contentVal == ''){
+						$('#content').after('<span class="error"><br/  >content must be not null</span>');
+						hasError = true;
+					};
+					if(!hasError){
+						$.post("/write",{ title: titleVal, content: contentVal, key: keyVal, password: passwordVal },function(data){
+							$("#message").html(data).show(1000);
+							$.get("/list",function(data){
+								$('#list').html(data);
+							});
+							$('#title').val('');
+							$('#password').val('');
+							$('#content').val('');
+						});
+					};
+					return false;
+				});
 			});
 			$.get("/list",function(data){
 				$('#list').html(data);
@@ -17,6 +45,7 @@
 	<body id="index">
 		<a href="{{ url }}">{{ url_linktext }}</a>
 		<div id="write"></div>
+		<div id="message"></div>
 		<div id="list"></div>
 	</body>
 </html>

@@ -39,14 +39,14 @@ class MainHandler(webapp.RequestHandler):
 		user = users.get_current_user()
 		if user:
 			url = users.create_logout_url(self.request.uri)
-			url_linktext = 'Logout'
+			urlLinktext = 'Logout'
 		else:
 			url = users.create_login_url(self.request.uri)
-			url_linktext = 'Login'
+			urlLinktext = 'Login'
 			
 		template_values = {
 			'url': url,
-			'url_linktext': url_linktext,
+			'url_linktext': urlLinktext,
 			}
 		path = os.path.join(os.path.dirname(__file__), 'index.html')
 		self.response.out.write(template.render(path, template_values))
