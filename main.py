@@ -66,9 +66,11 @@ class EditHandler(webapp.RequestHandler):
 	def post(self):
 		user = users.get_current_user()
 		password = self.request.get('password')
-		if self.request.get('key'):
-			key = db.Key(self.request.get('key'))
-			article = Article.all().ancestor(key).get()
+		key = self.request.get('key')
+		content = self.request.get('content')
+		title = self.request.get('title')
+		if key:
+			article = Article.all().ancestor(db.Key(key)).get()
 			if user or password == article.password:
 				article.deleted = True
 				db.put(article)
@@ -78,8 +80,8 @@ class EditHandler(webapp.RequestHandler):
 				if password:
 					article.password = password
 				article.deleted = False
-				article.content = self.request.get('content')
-				article.title = self.request.get('title')
+				article.content = content
+				article.title = title
 				article.put()
 				self.response.out.write('modify ok')
 			else:
@@ -97,14 +99,16 @@ class WriteHandler(webapp.RequestHandler):
 	def post(self):
 		user = users.get_current_user()
 		password = self.request.get('password')
+		content = self.request.get('content')
+		title = self.request.get('title')
 		article = Article()
 		if user:
 			article.author = user
 		if password:
 			article.password = password
 		article.deleted = False
-		article.content = self.request.get('content')
-		article.title = self.request.get('title')
+		article.content = content
+		article.title = title
 		article.put()
 		self.response.out.write('post ok')
 
@@ -129,9 +133,31 @@ class ListHandler(webapp.RequestHandler):
 
 class DeleteHandler(webapp.RequestHandler):      
 	def get(self):
-		#todo : delete
-		self.response.out.write('Hello world!')
-
+		key = self.request.get('key')
+		article = Article.all().ancestor(db.Key(key)).get()
+		user = users.get_current_user()
+		if user:
+			article.deleted = True
+			db.put(article)
+			self.response.out.write('delete ok')
+		else:
+			template_values = {
+				}
+			path = os.path.join(os.path.dirname(__file__), 'password.html')
+			self.response.out.write(template.render(path, template_values))
+	def post(self):	
+		key = self.request.get('key')
+		password = self.request.get('password')
+		if key:
+			article = Article.all().ancestor(db.Key(key)).get()
+			if password and article.password==password:
+				article.deleted = True
+				db.put(article)
+				self.response.out.write('delete ok')
+			else:
+				self.response.out.write('delete failed')
+		else:
+			self.response.out.write('wrong key')
 
 def main():
   application = webapp.WSGIApplication([('/', MainHandler),
