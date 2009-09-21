@@ -2,30 +2,32 @@ $(document).ready(function(){
 	//for write
 	$.get("/write",function(data){
 		$('#write').html(data);
-		$('#write #submit').click(function(){
+		$("#write form").bind('submit', function(event){
+			event.preventDefault();
 			$(".error").hide();
 			var hasError = false;
-			var titleVal = $('#title').val();
-			var contentVal = $('#content').val();
-			var keyVal = $('#key').val();
-			var passwordVal = $('#password').val();
+			var titleVal = $(this['title']).val();
+			var contentVal = $(this['content']).val();
+			var keyVal = $(this['key']).val();
+			var passwordVal = $(this['password']).val();
 			if(titleVal == ''){
-				$('#title').after('<span class="error">title must be not null</span>');
+				$(this['title']).after('<span class="error">title must be not null</span>');
 				hasError = true;
 			};
 			if(contentVal == ''){
-				$('#content').after('<span class="error"><br/  >content must be not null</span>');
+				$(this['content']).after('<span class="error"><br/  >content must be not null</span>');
 				hasError = true;
 			};
 			if(!hasError){
+				var frm = this;
 				$.post("/write",{ title: titleVal, content: contentVal, key: keyVal, password: passwordVal },function(data){
 					$("#message").html(data).show(1000);
 					$.get("/list",function(data){
 						$('#list').html(data);
 					});
-					$('#title').val('');
-					$('#password').val('');
-					$('#content').val('');
+					$(frm['title']).val('');
+					$(frm['password']).val('');
+					$(frm['content']).val('');
 				});
 			};
 			return false;
@@ -41,29 +43,26 @@ var edit = function(obj){
 	$.get("/edit",{key:obj},function(data){
 		$('#'+obj).html(data);
 		var objSize = $('#'+obj+" :input").length;
-		$('#'+obj+" :input:eq("+(objSize-1)+")").click(function(){
+		$('#'+obj+" form").bind('submit', function(event){
 			$(".error").hide();
 			var hasError = false;
-			var titleId = '#'+obj+' :input:eq(0)';
-			var contentId = '#'+obj+' :input:eq('+(objSize-2)+')';
-			var titleVal = $(titleId).val();
-			var contentVal = $(contentId).val();
+			var titleVal = $(this['title']).val();
+			var contentVal = $(this['content']).val();
 			var keyVal = obj;
 			var passwordVal = '';
 			if(objSize == 4){
-				var passwordId = '#'+obj+' :input:eq(1)';
-				passwordVal = $(passwordId).val();
+				passwordVal = $(this['password']).val();
 				if(passwordVal == ''){
-					$(passwordId).after('<span class="error"><br/  >password must be not null</span>');
+					$(this['password']).after('<span class="error"><br/  >password must be not null</span>');
 					hasError = true;
 				};
 			};
 			if(titleVal == ''){
-				$(titleId).after('<span class="error">title must be not null</span>');
+				$(this['title']).after('<span class="error">title must be not null</span>');
 				hasError = true;
 			};
 			if(contentVal == ''){
-				$(contentId).after('<span class="error"><br/  >content must be not null</span>');
+				$(this['content']).after('<span class="error"><br/  >content must be not null</span>');
 				hasError = true;
 			};
 			
@@ -78,7 +77,7 @@ var edit = function(obj){
 			return false;
 		});
 	});
-};
+}
 
 
 var del = function(obj){
