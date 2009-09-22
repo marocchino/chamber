@@ -1,4 +1,14 @@
 $(document).ready(function(){
+	
+	var pageNumber = 1;
+	var urlString = (window.location.href).split("#");
+	if(urlString[1]){
+		alert(urlString[1]);
+	};
+	// str = str.split("#");
+	// if(str[1]){
+	// 	alert(str[1]);
+	// };
 	//for write
 	$.get("/write",function(data){
 		$('#write').html(data);
@@ -37,6 +47,13 @@ $(document).ready(function(){
 		$('#list').html(data);
 	});
 });
+
+
+var goPage = function(p){
+	$.get('/list',{page:pageNumber},function(data){
+		$('list').html(data);
+	});
+};
 
 //for edit 
 var edit = function(obj){
@@ -77,7 +94,7 @@ var edit = function(obj){
 			return false;
 		});
 	});
-}
+};
 
 
 var del = function(obj){
@@ -89,9 +106,7 @@ var del = function(obj){
 			$.post("/del",{ key: obj, password: passwordVal },function(data){
 				$("#message").html(data).show(1000);
 				alert(data);
-				$.get("/list",function(list){
-					$('#list').html(list);
-				});
+				goPage(pageNumber);
 			});
 			return false;
 		});

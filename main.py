@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+#
+# update command : git push origin master
 
 import cgi
 import os
@@ -117,12 +119,17 @@ class ListHandler(webapp.RequestHandler):
 	def get(self):
 		user = users.get_current_user()
 		page = self.request.get('page')
-		if page:
-			#todo : paging 
-			pass
+		if not page:
+			page = 1
+		else:
+			page = int(page)
 		articleQuery = Article.all().filter('deleted =', False).order('-date')
-		articles = articleQuery.fetch(10)
+		startArticleNumber = (page-1)*10
+		articles = articleQuery.fetch(10,startArticleNumber)
+		totalPages = articleQuery.count()/10+1
 		template_values = {
+			'cpage':page,
+			'totalpages':totalPages,
 			'articles': articles,
 			'user':user,
 			}
