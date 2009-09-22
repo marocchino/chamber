@@ -1,14 +1,13 @@
 $(document).ready(function(){
 	
+	//get page number
 	var pageNumber = 1;
 	var urlString = (window.location.href).split("#");
 	if(urlString[1]){
-		alert(urlString[1]);
+		aguments = urlString[1].split("=");
+		pageNumber = aguments[1];
 	};
-	// str = str.split("#");
-	// if(str[1]){
-	// 	alert(str[1]);
-	// };
+	
 	//for write
 	$.get("/write",function(data){
 		$('#write').html(data);
@@ -32,9 +31,7 @@ $(document).ready(function(){
 				var frm = this;
 				$.post("/write",{ title: titleVal, content: contentVal, key: keyVal, password: passwordVal },function(data){
 					$("#message").html(data).show(1000);
-					$.get("/list",function(data){
-						$('#list').html(data);
-					});
+					goPage(1);
 					$(frm['title']).val('');
 					$(frm['password']).val('');
 					$(frm['content']).val('');
@@ -43,15 +40,14 @@ $(document).ready(function(){
 			return false;
 		});
 	});
-	$.get("/list",function(data){
-		$('#list').html(data);
-	});
+	goPage(pageNumber);
 });
 
 
-var goPage = function(p){
+var goPage = function(pageNumber){
 	$.get('/list',{page:pageNumber},function(data){
-		$('list').html(data);
+		$('#list').html(data);
+		window.location.replace("#page="+pageNumber);
 	});
 };
 
@@ -86,9 +82,7 @@ var edit = function(obj){
 			if(!hasError){
 				$.post("/edit",{ title: titleVal, content: contentVal, key: keyVal, password: passwordVal },function(data){
 					$("#message").html(data).show(1000);
-					$.get("/list",function(data){
-						$('#list').html(data);
-					});
+					goPage(1);
 				});
 			};
 			return false;

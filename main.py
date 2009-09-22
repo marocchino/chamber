@@ -129,7 +129,7 @@ class ListHandler(webapp.RequestHandler):
 		totalPages = articleQuery.count()/10+1
 		template_values = {
 			'cpage':page,
-			'totalpages':totalPages,
+			'totalpages':range(1,totalPages+1),
 			'articles': articles,
 			'user':user,
 			}

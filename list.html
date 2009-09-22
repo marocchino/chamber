@@ -18,5 +18,13 @@
 	{% endif %}
 	<blockquote>{{ article.content|escape|linebreaks }}</blockquote>
 </div>
+<div>
 {% endfor %}
-
+{% for page in totalpages%}
+	{% ifequal page cpage %}
+	<b>{{ page }}</b>
+	{% else %}
+	<a href="javascript:goPage({{ page }})">{{ page }}</a>
+	{% endifequal %}
+{% endfor %}
+</div>
