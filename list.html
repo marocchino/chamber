@@ -22,9 +22,9 @@
 {% endfor %}
 {% for page in totalpages%}
 	{% ifequal page cpage %}
-	<b>{{ page }}</b>
+		<b>{{ page }}</b>
 	{% else %}
-	<a href="javascript:goPage({{ page }})">{{ page }}</a>
+		<a href="javascript:goPage({{ page }})">{{ page }}</a>
 	{% endifequal %}
 {% endfor %}
 </div>
