@@ -1,3 +1,5 @@
+
+
 <form action="/write" method="post">
 	<div>
 		<label>title : </label>
@@ -10,7 +12,7 @@
 	</div>
 	{% endif %}
 	<div>
-		<textarea id="content" rows="8" cols="40">{{ article.content }}</textarea>
+		<textarea id="content" rows="8" cols="40" class="tinymce">{{ article.content }}</textarea>
 	</div>
 	<div>
 		<input type="submit" id="submit" value="Sign" />

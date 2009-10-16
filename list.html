@@ -12,11 +12,12 @@
 	 An anonymous person wrote {{ article.date|timesince }} ago:
 
 		{% if article.password %}
+			<!-- |escape|linebreaks -->
 			<a href="javascript:edit('{{ article.key }}')">edit</a>
 			<a href="javascript:del('{{ article.key }}')">del</a>
 		{% endif %}
 	{% endif %}
-	<blockquote>{{ article.content|escape|linebreaks }}</blockquote>
+	<blockquote>{{ article.content }}</blockquote>
 </div>
 <div>
 {% endfor %}
