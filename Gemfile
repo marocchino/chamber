@@ -34,7 +34,8 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 #   gem 'webrat'
 # end
 group :test do
-  gem 'cucumber'
+  gem 'cucumber-rails'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'database_cleaner'
 end
