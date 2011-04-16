@@ -1,16 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails'
 
 gem 'sqlite3'
+gem 'vestal_versions', :git => 'git://github.com/adamcooper/vestal_versions'
 gem 'decent_exposure'
 gem 'simple_form'
 gem 'nifty-generators', :group => :development
 gem 'jquery-rails'
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
