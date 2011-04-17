@@ -1,0 +1,14 @@
+%p#notice= notice
+
+
+%p
+  %b Title:
+  = @book.title
+
+%p
+  %b Version:
+  = @book.version
+
+= link_to 'Edit', edit_book_path(@book)
+|
+= link_to 'Back', books_path
