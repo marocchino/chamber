@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'vestal_versions', :git => 'git://github.com/adamcooper/vestal_versions'
 gem 'decent_exposure'
 gem 'simple_form'
+gem 'haml'
 gem 'nifty-generators', :group => :development
 gem 'jquery-rails'
 # Use unicorn as the web server
