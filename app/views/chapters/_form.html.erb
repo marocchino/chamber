@@ -1,0 +1,12 @@
+<%= form_for @chapter do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :book %><br />
+    <%= f.text_field :book %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

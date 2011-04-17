@@ -89,6 +89,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mocha (0.9.12)
     nifty-generators (0.4.6)
     nokogiri (1.4.4)
     polyglot (0.3.1)
@@ -153,6 +154,7 @@ DEPENDENCIES
   decent_exposure
   haml
   jquery-rails
+  mocha
   nifty-generators
   rails
   rails-erd

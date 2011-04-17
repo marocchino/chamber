@@ -10,11 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110417115617) do
+ActiveRecord::Schema.define(:version => 20110417231954) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
     t.string   "tag",        :limit => 4, :default => "0.1"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "chapters", :force => true do |t|
+    t.string   "title"
+    t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

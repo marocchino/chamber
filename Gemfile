@@ -40,3 +40,4 @@ group :test do
   gem 'capybara-webkit'
   gem 'database_cleaner'
 end
+gem "mocha", :group => :test
