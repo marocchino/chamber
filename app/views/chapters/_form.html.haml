@@ -1,0 +1,17 @@
+= simple_form_for(@chapter) do |f|
+  - if @chapter.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@chapter.errors.count, "error")
+        prohibited this chapter from being saved:
+
+      %ul
+        - @chapter.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :title
+    = f.association :book
+
+  .actions
+    = f.button :submit
