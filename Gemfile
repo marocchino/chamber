@@ -9,7 +9,6 @@ gem 'vestal_versions', :git => 'git://github.com/adamcooper/vestal_versions'
 gem 'decent_exposure'
 gem 'simple_form'
 gem 'haml'
-gem 'nifty-generators', :group => :development
 gem 'jquery-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -31,6 +30,8 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development do
+  gem 'haml-rails'
+  gem 'nifty-generators'
   gem 'rails-erd'
 #   gem 'webrat'
 end
