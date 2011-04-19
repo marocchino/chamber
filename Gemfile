@@ -31,7 +31,6 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 # and rake tasks are available in development mode:
 group :development do
   gem 'haml-rails'
-  gem 'nifty-generators'
   gem 'rails-erd'
 #   gem 'webrat'
 end
