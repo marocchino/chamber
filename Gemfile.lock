@@ -38,6 +38,8 @@ GEM
     activesupport (3.0.7)
     archive-tar-minitar (0.5.2)
     arel (2.0.9)
+    bistro_car (0.2.2)
+      jsmin (>= 1.0.1)
     builder (2.1.2)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
@@ -91,6 +93,7 @@ GEM
     jquery-rails (0.2.7)
       rails (~> 3.0)
       thor (~> 0.14.4)
+    jsmin (1.0.1)
     json (1.5.1)
     json_pure (1.5.1)
     linecache19 (0.5.12)
@@ -158,6 +161,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bistro_car
   capybara
   capybara-webkit
   coffee-script

@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   # GET /books/new
   # GET /books/new.xml
   def new
+    book.chapters.build
   end
 
   # GET /books/1/edit

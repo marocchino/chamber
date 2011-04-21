@@ -12,6 +12,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'coffee-script'
 gem 'immortal'
+gem 'bistro_car'
 # Use unicorn as the web server
 # gem 'unicorn'
 
