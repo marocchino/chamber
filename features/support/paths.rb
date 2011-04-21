@@ -1,3 +1,4 @@
+# encoding: utf-8
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -8,10 +9,12 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the home\s?page/
+    when /메인/
       '/'
-    when /the new book page/
+    when /책을 등록하는/
       new_book_path
+    when /책 목록/
+      books_path
 
 
     # Add more mappings here.

@@ -9,6 +9,6 @@
   %body
     %div#container
       - flash.each do |name, msg|
-        =content_for :div, msg, :id => "flash_#{name}" 
+        =content_tag :div, msg, :id => "flash_#{name}" 
       %h1=(yield(:title) if show_title?)
       = yield
