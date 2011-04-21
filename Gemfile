@@ -10,6 +10,8 @@ gem 'decent_exposure'
 gem 'simple_form'
 gem 'haml'
 gem 'jquery-rails'
+gem 'coffee-script'
+gem 'immortal'
 # Use unicorn as the web server
 # gem 'unicorn'
 
