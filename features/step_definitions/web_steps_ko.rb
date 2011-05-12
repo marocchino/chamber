@@ -23,51 +23,51 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 
-조건 /^(.+)페이지에 있습니다$/ do |page_name|
+조건 /^(.+)(?: 페이지|)에 있(?:습니)다$/ do |page_name|
   Given %{I am on #{page_name}}
 end
 
-만일 /^(.+)페이지로 갑니다$/ do |page_name|
+만일 /^(.+)(?: 페이지|)로 (?:갑니|간)다$/ do |page_name|
   When %{I go to #{page_name}}
 end
 
-만일 /^"([^"]*)"버튼을 누릅니다$/ do |button|
+만일 /^"([^"]*)"버튼을 (?:클릭|누름|누릅니다|클릭합니다)$/ do |button|
   When %{I press "#{button}"}
 end
 
-만일 /^"([^"]*)"링크를 클릭합니다$/ do |link|
+만일 /^"([^"]*)"링크를 (?:클릭|누름|누릅니다|클릭합니다)$/ do |link|
   When %{I follow "#{link}"}
 end
 
-만일 /^"([^"]*)"안에 있는 "([^"]*)"링크를 클릭합니다$/ do |parent, link|
+만일 /^"([^"]*)"안(?:에 있는|의) "([^"]*)"링크를 (?:클릭|누름|누릅니다|클릭합니다)$/ do |parent, link|
   When %{I follow "#{link}" within "#{parent}"}
 end
 
-만일 /^"([^"]*)"에 "([^"]*)"라고 적습니다$/ do |field, value|
+만일 /^"([^"]*)"에 "([^"]*)"(?:이|)라고 (?:입력|적습니다|적음|입력합니다|입력한다)$/ do |field, value|
   When %{I fill in "#{field}" with "#{value}"}
 end
 
-만일 /^"([^"]*)"라고 "([^"]*)"에 적습니다$/ do |value, field|
+만일 /^"([^"]*)"(?:이|)라고 "([^"]*)"에 (?:입력|적습니다|적음|입력합니다|입력한다)$/ do |value, field|
   When %{I fill in "#{value}" for "#{field}"}
 end
 
-만일 /^아레의 목록을 입력합니다$/ do |fields|
+만일 /^아래의 목록을 입력합니다:$/ do |fields|
   When %{I fill in the following:}, fields
 end
 
-만일 /^"([^"]*)"를 "([^"]*)"으로 합니다$/ do |field, value|
+만일 /^"([^"]*)"(?:을|를) "([^"]*)"(?:으)로 합니다$/ do |field, value|
   When %{I select "#{value}" from "#{field}"}
 end
 
-만일 /^날짜와 시간를 "([^"]*)"으로 합니다$/ do |time|
+만일 /^날짜와 시간을 "([^"]*)"(?:으)로 합니다$/ do |time|
   When %{I select "#{time}" as the date and time}
 end
 
-만일 /^"([^"]*)"의 날짜와 시간을 "([^"]*)"으로 합니다$/ do |datetime_label, datetime|
+만일 /^"([^"]*)"의 날짜와 시간을 "([^"]*)"(?:으)로 합니다$/ do |datetime_label, datetime|
   When %{I select "#{datetime}" as the "#{datetime_label}" date and time}
 end
 
-만일 /^시간을 "([^"]*)"으로 합니다$/ do |time|
+만일 /^시간을 "([^"]*)"(?:으)로 합니다$/ do |time|
   When %{I select "#{time}" as the time}
 end
 
@@ -147,7 +147,7 @@ end
   Then %{the "#{label}" checkbox should not be checked}
 end
 
-그러면 /^(.+)에 있어야 합니다$/ do |page_name|
+그러면 /^(.+)(?: 페이지|)에 있어야 합니다$/ do |page_name|
   Then %{I should be on #{page_name}}
 end
 
