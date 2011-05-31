@@ -4,11 +4,13 @@ source 'http://rubygems.org'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'rails'
 
+gem 'mongoid'
+gem 'bson_ext'
 gem 'sqlite3'
-gem 'vestal_versions', :git => 'git://github.com/adamcooper/vestal_versions'
 gem 'decent_exposure'
 gem 'simple_form'
 gem 'haml'
+gem 'sass'
 gem 'jquery-rails'
 gem 'coffee-script'
 gem 'immortal'
@@ -32,15 +34,23 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-group :development do
+group :development, :test do
   gem 'haml-rails'
   gem 'rails-erd'
+  gem 'guard'
+  gem 'guard-livereload'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
 #   gem 'webrat'
 end
 group :test do
-  gem 'cucumber-rails'
   gem 'capybara'
-  gem 'capybara-webkit'
+  #gem 'capybara-webkit'
   gem 'database_cleaner'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
 end
-gem "mocha", :group => :test

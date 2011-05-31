@@ -30,8 +30,11 @@ module Chamber
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.generators do |g|
-      g.template_engine :haml
-      g.test_framework :rspec, :fixture => false, :views => false
+      g.orm                 :mongoid
+      g.template_engine     :haml
+      g.test_framework      :shoulda, :views => false
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+      g.fallbacks[:shoulda] = :rspec
     end
 
     # JavaScript files you want as :defaults (application.js is always included).
