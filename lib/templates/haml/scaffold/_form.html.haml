@@ -1,6 +1,10 @@
-= simple_form_for(@<%= singular_name %>) do |f|
-<%- attributes.each do |attribute| -%>  
-  = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
-<%- end -%>  
-  
-  = f.button :submit
+= simple_form_for(@<%= singular_table_name %>) do |f|
+  = f.error_notification
+
+  .inputs
+  <%- attributes.each do |attribute| -%>
+    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
+  <%- end -%>
+
+  .actions
+    = f.button :submit
