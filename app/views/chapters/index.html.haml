@@ -3,19 +3,17 @@
 %table
   %tr
     %th Title
-    %th Book
     %th
     %th
     %th
 
-  - @chapters.each do |chapter|
+  - chapters.each do |chapter|
     %tr
       %td= chapter.title
-      %td= chapter.book
-      %td= link_to 'Show', chapter
-      %td= link_to 'Edit', edit_chapter_path(chapter)
-      %td= link_to 'Destroy', chapter, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', [book, chapter]
+      %td= link_to 'Edit', edit_book_chapter_path(book,chapter)
+      %td= link_to 'Destroy', [book, chapter]
 
 %br
 
-= link_to 'New Chapter', new_chapter_path
+= link_to 'New Chapter', new_book_chapter_path

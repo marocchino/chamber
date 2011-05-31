@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @sentence.text
+%p
+  %b Type:
+  = @sentence.type
+
+= link_to 'Edit', edit_sentence_path(@sentence)
+\|
+= link_to 'Back', sentences_path

@@ -1,0 +1,21 @@
+%h1 Listing sentences
+
+%table
+  %tr
+    %th Text
+    %th Type
+    %th
+    %th
+    %th
+
+  - @sentences.each do |sentence|
+    %tr
+      %td= sentence.text
+      %td= sentence.type
+      %td= link_to 'Show', sentence
+      %td= link_to 'Edit', edit_sentence_path(sentence)
+      %td= link_to 'Destroy', sentence, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Sentence', new_sentence_path

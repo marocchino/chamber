@@ -41,14 +41,15 @@ group :development, :test do
   gem 'guard-livereload'
   gem 'guard-cucumber'
   gem 'guard-rspec'
-  gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber'
   gem 'cucumber-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+end
+group :test do
   gem 'capybara'
   #gem 'capybara-webkit'
   gem 'database_cleaner'
-#   gem 'webrat'
 end

@@ -8,6 +8,11 @@
 %p
   %b Version:
   = book.version
+-if !chapters.blank?
+  -for chapter in chapters
+    %p=link_to chapter.title, [book, chapter]
+-else
+ 
 
 = link_to 'Edit', edit_book_path(book)
 |

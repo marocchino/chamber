@@ -1,7 +1,11 @@
 Chamber::Application.routes.draw do
-  resources :chapters
 
-  resources :books
+
+  resources :books do
+    resources :chapters do
+      resources :sentences
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

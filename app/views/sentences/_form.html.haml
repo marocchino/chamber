@@ -1,0 +1,9 @@
+= simple_form_for(@sentence) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :text
+    = f.input :type
+
+  .actions
+    = f.button :submit

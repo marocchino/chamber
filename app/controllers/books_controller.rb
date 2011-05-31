@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   expose(:books) { Book.all }
   expose :book
+  expose(:chapters) { book.chapters }
 
   # GET /books
   # GET /books.xml
@@ -20,6 +21,7 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    book.chapters.build
   end
 
   # POST /books
