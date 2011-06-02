@@ -1,7 +1,7 @@
 class ChaptersController < ApplicationController
   expose :book
   expose(:chapters) { book.chapters }
-  expose(:chapter)  { }
+  expose(:chapter)
   # GET /chapters
   # GET /chapters.xml
   def index

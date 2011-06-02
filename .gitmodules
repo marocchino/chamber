@@ -1,0 +1,6 @@
+[submodule "vendor/gems/decent_expose"]
+	path = vendor/gems/decent_expose-1.0.1
+	url = git@github.com:marocchino/decent_exposure.git
+[submodule "vendor/gems/decent_expose-1.0.1"]
+	path = vendor/gems/decent_expose-1.0.1
+	url = git@github.com:marocchino/decent_exposure.git

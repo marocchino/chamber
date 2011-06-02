@@ -7,7 +7,7 @@ gem 'rails'
 gem 'mongoid'
 gem 'bson_ext'
 gem 'sqlite3'
-gem 'decent_exposure'
+gem 'decent_exposure', :path => 'vendor/gems/decent_exposure-1.0.1'
 gem 'simple_form'
 gem 'haml'
 gem 'sass'
@@ -24,7 +24,7 @@ gem 'bistro_car'
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
 gem 'ruby-debug19', :require => 'ruby-debug'
-
+gem 'rake', "~> 0.9.1" 
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri'
