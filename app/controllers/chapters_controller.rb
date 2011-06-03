@@ -1,6 +1,6 @@
 class ChaptersController < ApplicationController
-  expose :book
-  expose(:chapters) { book.chapters }
+  expose(:book)
+  expose(:chapters) { book.chapters.all }
   expose(:chapter)
   # GET /chapters
   # GET /chapters.xml

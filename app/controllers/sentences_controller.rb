@@ -1,4 +1,9 @@
 class SentencesController < ApplicationController
+  expose(:book)
+  expose(:chapters) { book.chapters.all }
+  expose(:chapter)
+  expose(:sentences) { chapter.sentences.all }
+  expose(:sentence)
   # GET /sentences
   # GET /sentences.xml
   def index

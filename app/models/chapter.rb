@@ -6,4 +6,5 @@ class Chapter
   embedded_in :book
   field :title, type: String
   embeds_many :sentences
+  
 end
