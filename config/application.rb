@@ -36,10 +36,13 @@ module Chamber
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
       g.fallbacks[:shoulda] = :rspec
     end
+    config.assets.enabled = true
+    config.assets.js_compressor  = :uglifier
+    config.assets.css_compressor = :scss
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(prototype effects dragdrop controls rails)
-    config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+    #config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
 
     # Configure the default encoding used in templates for Ruby 1.9.
