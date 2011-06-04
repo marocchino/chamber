@@ -1,7 +1,4 @@
 = simple_form_for(book) do |f|
   = f.input :title
   = f.input :tag
-  = f.fields_for :chapters do |ff|
-    = ff.input :title, :input_html => { :class => "chapter" }
   = f.button :submit
-= coffee_script_bundle :books

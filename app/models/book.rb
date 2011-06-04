@@ -7,7 +7,4 @@ class Book
   field :title, type: String
   field :tag,   type: String
   validates_presence_of :title
-  accepts_nested_attributes_for :chapters, 
-    :reject_if => lambda { |chapter| chapter[:title].blank? }, 
-    :allow_destroy => true
 end

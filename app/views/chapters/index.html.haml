@@ -1,16 +1,14 @@
-%h1 Listing chapters
+%h1=book.title
 
 %table
   %tr
-    %th Title
-    %th
+    %th index
     %th
     %th
 
   - chapters.each do |chapter|
     %tr
-      %td= chapter.title
-      %td= link_to 'Show', [book, chapter]
+      %td= link_to chapter.title, book_chapter_sentences_path(book, chapter)
       %td= link_to 'Edit', edit_book_chapter_path(book,chapter)
       %td= link_to 'Destroy', [book, chapter]
 

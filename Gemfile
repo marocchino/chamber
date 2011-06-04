@@ -50,7 +50,7 @@ group :development, :test, :cucumber do
   gem 'factory_girl_rails'
   gem 'ruby-debug19', :require => 'ruby-debug'
 end
-group :test do
+group :test, :cucumber do
   gem 'capybara'
   #gem 'capybara-webkit'
   gem 'database_cleaner'

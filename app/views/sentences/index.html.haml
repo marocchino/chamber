@@ -8,7 +8,7 @@
     %th
     %th
 
-  - @sentences.each do |sentence|
+  - sentences.each do |sentence|
     %tr
       %td= sentence.text
       %td= sentence.type
@@ -18,4 +18,4 @@
 
 %br
 
-= link_to 'New Sentence', new_sentence_path
+= link_to 'New Sentence', new_book_chapter_sentence_path(book,chapter)

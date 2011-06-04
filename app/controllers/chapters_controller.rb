@@ -24,41 +24,27 @@ class ChaptersController < ApplicationController
   # POST /chapters
   # POST /chapters.xml
   def create
-
-    respond_to do |format|
-      if @chapter.save
-        format.html { redirect_to(@chapter, :notice => 'Chapter was successfully created.') }
-        format.xml  { render :xml => @chapter, :status => :created, :location => @chapter }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @chapter.errors, :status => :unprocessable_entity }
-      end
+    if chapter.save
+      redirect_to(book_chapter_sentences_path(book,chapter), :notice => 'Chapter was successfully created.')
+    else
+      render :action => "new"
     end
   end
 
   # PUT /chapters/1
   # PUT /chapters/1.xml
   def update
-
-    respond_to do |format|
-      if @chapter.update_attributes(params[:chapter])
-        format.html { redirect_to(@chapter, :notice => 'Chapter was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @chapter.errors, :status => :unprocessable_entity }
-      end
+    if chapter.update_attributes(params[:chapter])
+      redirect_to(book_chapter_path([book, chapter]), :notice => 'Chapter was successfully updated.')
+    else
+      render :action => "edit"
     end
   end
 
   # DELETE /chapters/1
   # DELETE /chapters/1.xml
   def destroy
-    @chapter.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(chapters_url) }
-      format.xml  { head :ok }
-    end
+    chapter.destroy
+    redirect_to book_chapters_path(book)
   end
 end
