@@ -26,30 +26,21 @@ class SentencesController < ApplicationController
   # POST /sentences
   # POST /sentences.xml
   def create
-    @sentence = Sentence.new(params[:sentence])
-
-    respond_to do |format|
-      if @sentence.save
-        format.html { redirect_to(@sentence, :notice => 'Sentence was successfully created.') }
-        format.xml  { render :xml => @sentence, :status => :created, :location => @sentence }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @sentence.errors, :status => :unprocessable_entity }
-      end
+    sentence.chapter = chapter
+    if sentence.save
+      redirect_to([book,chapter,sentence], :notice => 'Sentence was successfully created.')
+    else
+      render :action => "new"
     end
   end
 
   # PUT /sentences/1
   # PUT /sentences/1.xml
   def update
-    respond_to do |format|
-      if sentence.update_attributes(params[:sentence])
-        format.html { redirect_to(@sentence, :notice => 'Sentence was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @sentence.errors, :status => :unprocessable_entity }
-      end
+    if sentence.save
+      redirect_to(sentence, :notice => 'Sentence was successfully updated.')
+    else
+      render :action => "edit"
     end
   end
 
@@ -58,5 +49,5 @@ class SentencesController < ApplicationController
   def destroy
     sentence.destroy
     redirect_to book_chapter_sentences_path(book, chapter)
-  aend
+  end
 end

@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @sentence
+= link_to 'Show', [book,chapter,sentence]
 \|
-= link_to 'Back', sentences_path
+= link_to 'Back', book_chapter_sentences_path(book,chapter)

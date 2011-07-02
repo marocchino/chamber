@@ -2,11 +2,11 @@
 
 %p
   %b Text:
-  = @sentence.text
+  = sentence.text
 %p
   %b Type:
-  = @sentence.type
+  = sentence.type
 
-= link_to 'Edit', edit_sentence_path(@sentence)
+= link_to 'Edit', edit_book_chapter_sentence_path(book,chapter,sentence)
 \|
-= link_to 'Back', sentences_path
+= link_to 'Back', book_chapter_sentences_path(book,chapter)

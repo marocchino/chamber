@@ -1,4 +1,4 @@
-%h1 Listing sentences
+%h1=chapter.title
 
 %table
   %tr
@@ -12,9 +12,9 @@
     %tr
       %td= sentence.text
       %td= sentence.type
-      %td= link_to 'Show', sentence
-      %td= link_to 'Edit', edit_sentence_path(sentence)
-      %td= link_to 'Destroy', sentence, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', [book,chapter,sentence]
+      %td= link_to 'Edit', edit_book_chapter_sentence_path(book,chapter,sentence)
+      %td= link_to 'Destroy', [book,chapter,sentence], :confirm => 'Are you sure?', :method => :delete
 
 %br
 

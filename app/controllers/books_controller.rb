@@ -34,7 +34,7 @@ class BooksController < ApplicationController
   # PUT /books/1
   # PUT /books/1.xml
   def update
-    if book.update_attributes(params[:book])
+    if book.save
       redirect_to(books_url)
     else
       render :action => "edit"

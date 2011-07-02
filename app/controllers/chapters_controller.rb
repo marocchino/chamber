@@ -2,6 +2,7 @@ class ChaptersController < ApplicationController
   expose(:book)
   expose(:chapters) { book.chapters.all }
   expose(:chapter)
+  before_filter :assciation_bulder, :only => [:create, :update]
   # GET /chapters
   # GET /chapters.xml
   def index
@@ -34,7 +35,9 @@ class ChaptersController < ApplicationController
   # PUT /chapters/1
   # PUT /chapters/1.xml
   def update
-    if chapter.update_attributes(params[:chapter])
+    debugger
+    chapter.book = book
+    if chapter.save
       redirect_to(book_chapter_path([book, chapter]), :notice => 'Chapter was successfully updated.')
     else
       render :action => "edit"
@@ -46,5 +49,9 @@ class ChaptersController < ApplicationController
   def destroy
     chapter.destroy
     redirect_to book_chapters_path(book)
+  end
+
+  private
+  def assciation_bulder
   end
 end

@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 # Bundle edge Rails instead:
 gem 'rake', "~> 0.9.1"
-gem 'rails', "~> 3.1.0.rc1"
+gem 'rails', "~> 3.1.0.rc4"
 
 #gem 'rails'
 # for rails 3.1
@@ -42,6 +42,7 @@ group :development, :test, :cucumber do
   gem 'guard-livereload'
   gem 'guard-cucumber'
   gem 'guard-rspec'
+  gem 'guard-pow'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber'
