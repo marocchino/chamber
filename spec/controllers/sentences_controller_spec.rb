@@ -30,7 +30,7 @@ describe SentencesController do
     it 'assigns all sentences as @sentences' do
       sentence = Sentence.create! valid_attributes
       get :index
-      assigns(:sentences).should eq([sentence])
+      expect(assigns(:sentences)).to eq([sentence])
     end
   end
 
@@ -38,14 +38,14 @@ describe SentencesController do
     it 'assigns the requested sentence as @sentence' do
       sentence = Sentence.create! valid_attributes
       get :show, id: sentence.id.to_s
-      assigns(:sentence).should eq(sentence)
+      expect(assigns(:sentence)).to eq(sentence)
     end
   end
 
   describe 'GET new' do
     it 'assigns a new sentence as @sentence' do
       get :new
-      assigns(:sentence).should be_a_new(Sentence)
+      expect(assigns(:sentence)).to be_a_new(Sentence)
     end
   end
 
@@ -53,7 +53,7 @@ describe SentencesController do
     it 'assigns the requested sentence as @sentence' do
       sentence = Sentence.create! valid_attributes
       get :edit, id: sentence.id.to_s
-      assigns(:sentence).should eq(sentence)
+      expect(assigns(:sentence)).to eq(sentence)
     end
   end
 
@@ -67,29 +67,29 @@ describe SentencesController do
 
       it 'assigns a newly created sentence as @sentence' do
         post :create, sentence: valid_attributes
-        assigns(:sentence).should be_a(Sentence)
-        assigns(:sentence).should be_persisted
+        expect(assigns(:sentence)).to be_a(Sentence)
+        expect(assigns(:sentence)).to be_persisted
       end
 
       it 'redirects to the created sentence' do
         post :create, sentence: valid_attributes
-        response.should redirect_to(Sentence.last)
+        expect(response).to redirect_to(Sentence.last)
       end
     end
 
     describe 'with invalid params' do
       it 'assigns a newly created but unsaved sentence as @sentence' do
         # Trigger the behavior that occurs when invalid params are submitted
-        Sentence.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Sentence).to receive(:save).and_return(false)
         post :create, sentence: {}
-        assigns(:sentence).should be_a_new(Sentence)
+        expect(assigns(:sentence)).to be_a_new(Sentence)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Sentence.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Sentence).to receive(:save).and_return(false)
         post :create, sentence: {}
-        response.should render_template('new')
+        expect(response).to render_template('new')
       end
     end
   end
@@ -102,20 +102,20 @@ describe SentencesController do
         # specifies that the Sentence created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Sentence.any_instance.should_receive(:update_attributes).with('these' => 'params')
+        expect_any_instance_of(Sentence).to receive(:update_attributes).with('these' => 'params')
         put :update, id: sentence.id, sentence: { 'these' => 'params' }
       end
 
       it 'assigns the requested sentence as @sentence' do
         sentence = Sentence.create! valid_attributes
         put :update, id: sentence.id, sentence: valid_attributes
-        assigns(:sentence).should eq(sentence)
+        expect(assigns(:sentence)).to eq(sentence)
       end
 
       it 'redirects to the sentence' do
         sentence = Sentence.create! valid_attributes
         put :update, id: sentence.id, sentence: valid_attributes
-        response.should redirect_to(sentence)
+        expect(response).to redirect_to(sentence)
       end
     end
 
@@ -123,17 +123,17 @@ describe SentencesController do
       it 'assigns the sentence as @sentence' do
         sentence = Sentence.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Sentence.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Sentence).to receive(:save).and_return(false)
         put :update, id: sentence.id.to_s, sentence: {}
-        assigns(:sentence).should eq(sentence)
+        expect(assigns(:sentence)).to eq(sentence)
       end
 
       it "re-renders the 'edit' template" do
         sentence = Sentence.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Sentence.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Sentence).to receive(:save).and_return(false)
         put :update, id: sentence.id.to_s, sentence: {}
-        response.should render_template('edit')
+        expect(response).to render_template('edit')
       end
     end
   end
@@ -149,7 +149,7 @@ describe SentencesController do
     it 'redirects to the sentences list' do
       sentence = Sentence.create! valid_attributes
       delete :destroy, id: sentence.id.to_s
-      response.should redirect_to(sentences_url)
+      expect(response).to redirect_to(sentences_url)
     end
   end
 end
