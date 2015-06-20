@@ -1,6 +1,4 @@
 Chamber::Application.routes.draw do
-
-
   resources :books do
     resources :chapters do
       resources :sentences

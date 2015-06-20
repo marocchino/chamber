@@ -3,7 +3,7 @@ class Sentence
   include Mongoid::Versioning
   include Mongoid::Timestamps
 
-  field :text, :type => String
-  field :type, :type => String
+  field :text, type: String
+  field :type, type: String
   embedded_in :chapter
 end

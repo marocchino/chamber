@@ -2,7 +2,7 @@ class ChaptersController < ApplicationController
   expose(:book)
   expose(:chapters) { book.chapters.all }
   expose(:chapter)
-  before_filter :assciation_bulder, :only => [:create, :update]
+  before_filter :assciation_bulder, only: [:create, :update]
   # GET /chapters
   # GET /chapters.xml
   def index
@@ -26,9 +26,9 @@ class ChaptersController < ApplicationController
   # POST /chapters.xml
   def create
     if chapter.save
-      redirect_to(book_chapter_sentences_path(book,chapter), :notice => 'Chapter was successfully created.')
+      redirect_to(book_chapter_sentences_path(book, chapter), notice: 'Chapter was successfully created.')
     else
-      render :action => "new"
+      render action: 'new'
     end
   end
 
@@ -38,9 +38,9 @@ class ChaptersController < ApplicationController
     debugger
     chapter.book = book
     if chapter.save
-      redirect_to(book_chapter_path([book, chapter]), :notice => 'Chapter was successfully updated.')
+      redirect_to(book_chapter_path([book, chapter]), notice: 'Chapter was successfully updated.')
     else
-      render :action => "edit"
+      render action: 'edit'
     end
   end
 
@@ -52,6 +52,7 @@ class ChaptersController < ApplicationController
   end
 
   private
+
   def assciation_bulder
   end
 end

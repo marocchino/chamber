@@ -5,8 +5,8 @@ end
 
 When /^(\d+)번째 책을 지웁니다$/ do |pos|
   visit books_path
-  within("table tr:nth-child(#{pos.to_i+1})") do
-    click_link "Destroy"
+  within("table tr:nth-child(#{pos.to_i + 1})") do
+    click_link 'Destroy'
   end
 end
 

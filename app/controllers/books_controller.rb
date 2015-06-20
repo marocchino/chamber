@@ -27,7 +27,7 @@ class BooksController < ApplicationController
     if book.save
       redirect_to(books_url)
     else
-      render :action => "new"
+      render action: 'new'
     end
   end
 
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
     if book.save
       redirect_to(books_url)
     else
-      render :action => "edit"
+      render action: 'edit'
     end
   end
 

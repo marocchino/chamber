@@ -28,9 +28,9 @@ class SentencesController < ApplicationController
   def create
     sentence.chapter = chapter
     if sentence.save
-      redirect_to([book,chapter,sentence], :notice => 'Sentence was successfully created.')
+      redirect_to([book, chapter, sentence], notice: 'Sentence was successfully created.')
     else
-      render :action => "new"
+      render action: 'new'
     end
   end
 
@@ -38,9 +38,9 @@ class SentencesController < ApplicationController
   # PUT /sentences/1.xml
   def update
     if sentence.save
-      redirect_to(sentence, :notice => 'Sentence was successfully updated.')
+      redirect_to(sentence, notice: 'Sentence was successfully updated.')
     else
-      render :action => "edit"
+      render action: 'edit'
     end
   end
 

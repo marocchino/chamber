@@ -30,10 +30,10 @@ module Chamber
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.generators do |g|
-      g.orm                 :mongoid
-      g.template_engine     :haml
-      g.test_framework      :shoulda, :views => false
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+      g.orm :mongoid
+      g.template_engine :haml
+      g.test_framework :shoulda, views: false
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
       g.fallbacks[:shoulda] = :rspec
     end
     config.assets.enabled = true
@@ -42,19 +42,18 @@ module Chamber
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(prototype effects dragdrop controls rails)
-    #config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
-
+    # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
     # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
     # Enable IdentityMap for Active Record, to disable set to false or remove the line below.
-    #config.active_record.identity_map = true
+    # config.active_record.identity_map = true
 
     # Enable the asset pipeline
-    #config.assets.enabled = true
+    # config.assets.enabled = true
   end
 end
