@@ -1,6 +1,5 @@
 Chamber::Application.configure do
-  config.active_record.mass_assignment_sanitizer = :strict
-  config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.eager_load = false
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -9,7 +8,6 @@ Chamber::Application.configure do
   config.cache_classes = false
 
   # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -22,5 +20,4 @@ Chamber::Application.configure do
   config.active_support.deprecation = :log
 
   # Only use best-standards-support built into browsers
-  config.action_dispatch.best_standards_support = :builtin
 end

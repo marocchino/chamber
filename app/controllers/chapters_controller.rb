@@ -2,7 +2,7 @@ class ChaptersController < ApplicationController
   expose(:book)
   expose(:chapters) { book.chapters.all }
   expose(:chapter)
-  before_filter :assciation_bulder, only: [:create, :update]
+  before_action :assciation_bulder, only: [:create, :update]
   # GET /chapters
   # GET /chapters.xml
   def index

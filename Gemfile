@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake', '~> 0.9.1'
-gem 'rails', '~> 3.2.0'
+gem 'rails', '~> 4.0.0'
 
 gem 'sqlite3'
 
@@ -12,24 +12,20 @@ gem 'haml'
 gem 'jquery-rails'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier',     '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
-group :development, :test, :cucumber do
+group :development, :test do
   gem 'haml-rails'
   gem 'guard'
   gem 'guard-livereload'
-  gem 'guard-cucumber'
   gem 'guard-rspec'
   gem 'guard-pow'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
 end
-group :test, :cucumber do
-  gem 'capybara'
+group :test do
   gem 'database_cleaner'
 end
