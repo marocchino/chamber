@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake', '~> 0.9.1'
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.2.0'
 
 gem 'sqlite3'
 
