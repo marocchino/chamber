@@ -1,4 +1,6 @@
 Chamber::Application.configure do
+  config.active_record.mass_assignment_sanitizer = :strict
+  config.active_record.auto_explain_threshold_in_seconds = 0.5
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on

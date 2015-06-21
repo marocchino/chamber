@@ -1,10 +1,4 @@
-class Book
-  include Mongoid::Document
-  include Mongoid::Versioning
-  include Mongoid::Timestamps
-
-  embeds_many :chapters, inverse_of: :book
-  field :title, type: String
-  field :tag,   type: String
+class Book < ActiveRecord::Base
+  has_many :chapters
   validates_presence_of :title
 end
