@@ -1,19 +1,16 @@
 %p#notice= notice
 
-
 %p
   %b Title:
-  = book.title
+  = @book.title
 
 %p
   %b Version:
-  = book.version
--if !chapters.blank?
-  -for chapter in chapters
-    %p=link_to chapter.title, [book, chapter]
--else
- 
+  = @book.version
+-unless @book.chapters.blank?
+  -for chapter in @book.chapters
+    %p=link_to chapter.title, [@book, chapter]
 
-= link_to 'Edit', edit_book_path(book)
+= link_to 'Edit', edit_book_path(@book)
 |
 = link_to 'Back', books_path

@@ -6,7 +6,6 @@ gem 'rails', '~> 4.2.0'
 gem 'sqlite3'
 
 gem 'bson_ext'
-gem 'decent_exposure'
 gem 'simple_form'
 gem 'haml'
 gem 'jquery-rails'
@@ -22,7 +21,6 @@ group :development, :test do
   gem 'guard'
   gem 'guard-livereload'
   gem 'guard-rspec'
-  gem 'guard-pow'
   gem 'rspec'
   gem 'rspec-rails'
 end
